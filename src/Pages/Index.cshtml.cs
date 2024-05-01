@@ -6,6 +6,7 @@ namespace myWebApp.Pages;
 public class IndexModel : PageModel
     {
         public string StudentName { get; private set; } = "PageModel in C#";
+        public string EnrollmentDate { get; private set; } = "PageModel in C#";
         private readonly ILogger<IndexModel> _logger;
         private readonly myWebApp.Data.SchoolContext _context;
 
@@ -19,5 +20,6 @@ public class IndexModel : PageModel
         {
             var s =_context.Students?.Where(d=>d.ID==1).FirstOrDefault();
             this.StudentName = $"{s?.FirstMidName} {s?.LastName}";
+            this.EnrollmentDate = $"{s?.EnrollmentDate}";
         }
     }
